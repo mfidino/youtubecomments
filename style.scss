@@ -98,7 +98,7 @@ a {
 h2 { color: #666; }
 
 .former-border {
-  @include border-radius(8px);
+  @include border-radius(16px);
   @include box-shadow(0 0 2px rgba(black,.2));
   @include clearfix;
   position: relative;
@@ -183,6 +183,7 @@ textarea, input {
 }
 
 .comments, .video-stats {
+  // display: none;
   margin: 40px 0;
   label {
     margin-top: 20px;
@@ -196,7 +197,7 @@ textarea, input {
   }
 }
 
-.comments-table {
+.comments-table-wrap {
   max-height: 100%;
   overflow: auto;
 }
