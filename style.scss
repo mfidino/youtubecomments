@@ -1,0 +1,188 @@
+$blueLight: #85a4b0;
+$blue: rgb(52,152,219);
+$blueDark: rgb(41,128,185);
+$blueDarker: rgb(53,73,94);
+$blueDarkerer: rgb(44,62,80);
+$turquoise: rgb(26,188,56);
+$turquoiseDark: rgb(22,160,133);
+$green: rgb(46,204,113);
+$greenDark: rgb(39,174,96);
+$purple: rgb(155,89,182);
+$purpleDark: rgb(142,168,173);
+$yellow: rgb(241,196,15);
+$YellowDark: rgb(243,156,18);
+$orange: rgb(230,126,34);
+$orangeDark: rgb(211,84,0);
+$red: rgb(231,76,60);
+$redDark: rgb(192,57,43);
+$yellowPale: rgb(231,220,188);
+$concrete: #95A5A7;
+
+
+
+@mixin clearfix() {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+     -moz-transform: translate($x, $y);
+      -ms-transform: translate($x, $y);
+       -o-transform: translate($x, $y);
+          transform: translate($x, $y);
+}
+
+@import "tables.scss";
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: $blueDarker;
+  font-family: 'Rambla', sans-serif;
+  color: #111;
+  font-size: 18px;
+  margin: 0;
+  padding: 0 10px;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+  &:hover { color: darken($blueDark, 10%); }
+}
+
+
+.wrapper {
+  @include border-radius(4px);
+  @include box-shadow(1px 1px 2px rgba(black,.2));
+  position: relative;
+  border: 3px solid #ccc;
+  background: #f0f0f0;
+  margin: 100px auto;
+  padding: 10px 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+h2 { color: #666; }
+
+.former-border {
+  @include border-radius(8px);
+  @include box-shadow(0 0 2px rgba(black,.2));
+  @include clearfix;
+  position: relative;
+  border: 1px solid darken($blueDarker, 5%);
+  background: $blueDarker;
+  width: 100%;
+  padding: 8px;
+}
+
+.former {
+  @include border-radius(8px);
+  @include box-shadow(0 0 2px rgba(black,.2));
+  @include clearfix;
+  position: relative;
+  border: 1px solid darken($blueDark, 5%);
+  background: $blueDark;
+  width: 100%;
+  padding: 20px;
+  form { margin: 0; }
+  label {
+    color: lighten($blueDark, 40%);
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    margin: 0 0 .25em;
+  }
+  input {
+    width: 85%;
+    display: block;
+    float: left;
+  }
+  a {
+    display: block;
+    width: 13%;
+    margin-left: 2%;
+    cursor: pointer;
+    float: left;
+  }
+}
+
+input {
+  @include border-radius(2px);
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  @include transition(#{border linear .2s, box-shadow linear .2s});
+  height: auto;
+  font-size: 18px;
+  line-height: 1.3em;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 2px 10px;
+  // margin-top: -1px;
+  &:focus {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    @include box-shadow(#{inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)});
+  }
+}
+
+.btn {
+  @include box-shadow(inset 0 0 3px rgba(black,.2));
+  @include border-radius(3px);
+  @extend .btn-pop;
+  background: $greenDark;
+  border: 1px solid darken($greenDark, 5%);
+  font-weight: normal;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: capitalize; 
+  text-align: center;
+  color: white;
+  line-height: 1.3em;
+  padding: .25em .5em;
+  &:hover {
+    @include box-shadow(1px 1px 2px rgba(black,.4));
+    @include translate(-1px,-1px);
+    text-decoration: none;
+    color: white;
+  } 
+  &:active {
+    @include box-shadow(0 0 1px rgba(black,.4));
+    @include translate(1px,1px);
+  }
+}
+
+.users {
+  margin: 40px 0;
+}
